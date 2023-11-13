@@ -24,10 +24,14 @@ int _printf(const char *format, ...)
 			switch (*format)
 			{
 				case 'c':
-					count += write(1, &va_arg(args, int), 1);
+					char c = va_arg(args, int);
+
+					count += write(1, &c, 1);
 					break;
 				case 's':
-					count += write(1, va_arg(args, char*), strlen(va_arg(args, char*)));
+					char *str = va_arg(args, char*);
+
+					count += write(1, str, strlen(str));
 					break;
 				case '%':
 					count += write(1, "%", 1);
