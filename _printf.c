@@ -9,27 +9,34 @@
 
 int _printf(const char *format, ...)
 {
-	if (format == NULL)
-		return (-1);
-
 	va_list args;
+
+	if (format == NULL)
+                return (-1);
 
 	va_start(args, format);
 
-	int count = 0;
+	int count = 0; 
 
 	while (*format)
 	{
+		int c;
+		
 		if (*format == '%' && format++)
+		{
+			char *str;
+
 			switch (*format)
 			{
+				count = 0;
+
 				case 'c':
-					char c = va_arg(args, int);
+					c = va_arg(args, int);
 
 					count += write(1, &c, 1);
 					break;
 				case 's':
-					char *str = va_arg(args, char*);
+					str = va_arg(args, char*);
 
 					count += write(1, str, strlen(str));
 					break;
@@ -41,6 +48,7 @@ int _printf(const char *format, ...)
 					count += write(1, format, 1);
 					break;
 			}
+		}
 		else
 			count += write(1, format, 1);
 		format++;
