@@ -17,11 +17,9 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 
 	while (*format)
-	{
 		int c;
 
 		if (*format == '%' && format++)
-		{
 			char *str;
 
 			count = 0;
@@ -46,11 +44,9 @@ int _printf(const char *format, ...)
 					count += write(1, format, 1);
 					break;
 			}
-		}
 		else
 			count += write(1, format, 1);
 		format++;
-	}
 	va_end(args);
 	return (count);
 }
