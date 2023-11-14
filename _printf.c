@@ -10,26 +10,24 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
+	int count;
 
 	if (format == NULL)
-                return (-1);
-
+		return (-1);
 	va_start(args, format);
-
-	int count = 0; 
 
 	while (*format)
 	{
 		int c;
-		
+
 		if (*format == '%' && format++)
 		{
 			char *str;
 
+			count = 0;
+
 			switch (*format)
 			{
-				count = 0;
-
 				case 'c':
 					c = va_arg(args, int);
 
