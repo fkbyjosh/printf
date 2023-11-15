@@ -1,12 +1,9 @@
 #include "main.h"
-
 /**
  * _printf - produces output according to a format
  * @format: a charcter string
- *
  * Return: 0 (succes)
  */
-
 int _printf(const char *format, ...)
 {
 	va_list args;
