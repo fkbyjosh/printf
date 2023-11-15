@@ -40,12 +40,12 @@ struct fmt
  */
 typedef struct fmt fmt_t;
 
-int _printf(const char *format, ...);
+int _printf(const char *fmt, ...);
 <<<<<<< HEAD
 int print_ch(va_list buf)
 #endif
 =======
-int handle_print(const char *fmt, int *i,
+int handle_print(const char *fmt, int *ind_arg,
 va_list list, char buffer[], int flags, int width, int precision, int size);
 
 /****************** FUNCTIONS ******************/
@@ -79,15 +79,15 @@ char buffer[], int flags, char flag_ch, int width, int precision, int size);
 int print_non_printable(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
-/* Funcion to print memory address */
+/* Function to print memory address */
 int print_pointer(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
-/* Funciotns to handle other specifiers */
+/* Functions to handle other specifiers */
 int get_flags(const char *format, int *i);
-int get_width(const char *format, int *i, va_list list);
+int get_width(const char *fmt, int *a, va_list list);
 int get_precision(const char *format, int *i, va_list list);
-int get_size(const char *format, int *i);
+int get_size(const char *fmt, int *a);
 
 /*Function to print string in reverse*/
 int print_reverse(va_list types, char buffer[],
@@ -98,26 +98,26 @@ int print_rot13string(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
 /* width handler */
-int handle_write_char(char c, char buffer[],
+int handle_ch(char ch, char buffer[],
 	int flags, int width, int precision, int size);
-int write_number(int is_positive, int ind, char buffer[],
+int write_num(int i_positive, int ch_t, char buffer[],
 	int flags, int width, int precision, int size);
-int write_num(int ind, char bff[], int flags, int width, int precision,
+int write_num(int ind_num, char buffer[], int flags, int width, int prec,
 	int length, char padd, char extra_c);
-int write_pointer(char buffer[], int ind, int length,
+int mem_add(char buffer[], int ind_num, int length,
 	int width, int flags, char padd, char extra_c, int padd_start);
 
-int write_unsgnd(int is_negative, int ind,
+int num_unsgnd(int num_negative, int ind_num,
 char buffer[],
 	int flags, int width, int precision, int size);
 
 /****************** UTILS ******************/
-int is_printable(char);
+int ch_printable(char);
 int append_hexa_code(char, char[], int);
-int is_digit(char);
+int veri_digit(char);
 
-long int convert_size_number(long int num, int size);
-long int convert_size_unsgnd(unsigned long int num, int size);
+long int cast_number(long int num, int size);
+long int cast_unsgnd_num(unsigned long int num, int size);
 
 #endif /* MAIN_H */
 >>>>>>> 5f92031333838df331bad5a0a08eb2ae92a681c4
