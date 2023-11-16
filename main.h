@@ -41,10 +41,8 @@ struct fmt
 typedef struct fmt fmt_t;
 
 int _printf(const char *fmt, ...);
-<<<<<<< HEAD
-int print_ch(va_list buf)
+int print_ch(va_list buf);
 #endif
-=======
 int handle_print(const char *fmt, int *ind_arg,
 va_list list, char buffer[], int flags, int width, int precision, int size);
 
@@ -120,4 +118,3 @@ long int cast_number(long int num, int size);
 long int cast_unsgnd_num(unsigned long int num, int size);
 
 #endif /* MAIN_H */
->>>>>>> 5f92031333838df331bad5a0a08eb2ae92a681c4
