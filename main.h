@@ -42,7 +42,6 @@ typedef struct fmt fmt_t;
 
 int _printf(const char *fmt, ...);
 int print_ch(va_list buf);
-#endif
 int handle_print(const char *fmt, int *ind_arg,
 va_list list, char buffer[], int flags, int width, int precision, int size);
 
@@ -96,23 +95,23 @@ int print_rot13string(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
 /* width handler */
-int handle_ch(char ch, char buffer[],
+int handle_write_char(char c, char buffer[],
 	int flags, int width, int precision, int size);
-int write_num(int i_positive, int ch_t, char buffer[],
+int write_number(int is_positive, int ind, char buffer[],
 	int flags, int width, int precision, int size);
-int write_num(int ind_num, char buffer[], int flags, int width, int prec,
+int write_num(int ind, char buffer[], int flags, int width, int precision,
 	int length, char padd, char extra_c);
 int mem_add(char buffer[], int ind_num, int length,
 	int width, int flags, char padd, char extra_c, int padd_start);
 
-int num_unsgnd(int num_negative, int ind_num,
+int write_unsgnd(int is_negative, int ind,
 char buffer[],
 	int flags, int width, int precision, int size);
 
 /****************** UTILS ******************/
-int ch_printable(char);
+int is_printable(char);
 int append_hexa_code(char, char[], int);
-int veri_digit(char);
+int is_digit(char);
 
 long int cast_number(long int num, int size);
 long int cast_unsgnd_num(unsigned long int num, int size);
