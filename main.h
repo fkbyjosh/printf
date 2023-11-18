@@ -3,7 +3,6 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <unistd.h>
-#include <string.h>
 
 #define UNUSED(x) (void)(x)
 #define BUFF_SIZE 1024
@@ -40,11 +39,10 @@ struct fmt
  */
 typedef struct fmt fmt_t;
 
-int _printf(const char *fmt, ...);
-int print_ch(va_list buf);
-int handle_print(const char *fmt, int *ind_arg,
+int _printf(const char *format, ...);
+int handle_print(const char *fmt, int *i,
 va_list list, char buffer[], int flags, int width, int precision, int size);
-void print_buffer(char buffer[], int *buff_ind);
+
 /****************** FUNCTIONS ******************/
 
 /* Funtions to print chars and strings */
@@ -76,17 +74,15 @@ char buffer[], int flags, char flag_ch, int width, int precision, int size);
 int print_non_printable(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
-/* Function to print memory address */
+/* Funcion to print memory address */
 int print_pointer(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
-/* Functions to handle other specifiers */
+/* Funciotns to handle other specifiers */
 int get_flags(const char *format, int *i);
-int get_width(const char *fmt, int *a, va_list list);
+int get_width(const char *format, int *i, va_list list);
 int get_precision(const char *format, int *i, va_list list);
-int get_size(const char *fmt, int *a);
-long int convert_size_unsgnd(unsigned long int num, int size);
-long int convert_size_number(long int num, int size);
+int get_size(const char *format, int *i);
 
 /*Function to print string in reverse*/
 int print_reverse(va_list types, char buffer[],
@@ -101,7 +97,7 @@ int handle_write_char(char c, char buffer[],
 	int flags, int width, int precision, int size);
 int write_number(int is_positive, int ind, char buffer[],
 	int flags, int width, int precision, int size);
-int write_num(int ind, char buffer[], int flags, int width, int precision,
+int write_num(int ind, char bff[], int flags, int width, int precision,
 	int length, char padd, char extra_c);
 int write_pointer(char buffer[], int ind, int length,
 	int width, int flags, char padd, char extra_c, int padd_start);
@@ -115,7 +111,7 @@ int is_printable(char);
 int append_hexa_code(char, char[], int);
 int is_digit(char);
 
-long int cast_number(long int num, int size);
-long int cast_unsgnd_num(unsigned long int num, int size);
+long int convert_size_number(long int num, int size);
+long int convert_size_unsgnd(unsigned long int num, int size);
 
 #endif /* MAIN_H */
