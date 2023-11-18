@@ -115,7 +115,6 @@ int print_int(va_list types, char buffer[],
 	int is_negative = 0;
 	long int n = va_arg(types, long int);
 	unsigned long int num;
-	long int convert_size_number(long int num, int size);
 
 	n = convert_size_number(n, size);
 
