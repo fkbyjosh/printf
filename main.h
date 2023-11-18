@@ -44,7 +44,7 @@ int _printf(const char *fmt, ...);
 int print_ch(va_list buf);
 int handle_print(const char *fmt, int *ind_arg,
 va_list list, char buffer[], int flags, int width, int precision, int size);
-
+void print_buffer(char buffer[], int *buff_ind);
 /****************** FUNCTIONS ******************/
 
 /* Funtions to print chars and strings */
